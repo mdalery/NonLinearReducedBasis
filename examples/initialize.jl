@@ -3,7 +3,7 @@
 using Distributed
 using JLD2
 
-const _NTHREADS = 15
+const _NTHREADS = 1
 
 if nprocs() == 1
 	addprocs(_NTHREADS) # Number of threads available
