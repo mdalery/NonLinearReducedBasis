@@ -1,12 +1,13 @@
-@info "Initalizing packages and constants..."
+@info "Initializing packages and constants..."
 
 using Distributed
 using JLD2
 using Plots
 pyplot()
 
-# Distributed constants
-const _NTHREADS = 15 # Number of threads available
+# Number of threads available
+const _NTHREADS = 20
+# const _NTHREADS = 1
 
 if nprocs() == 1
 	addprocs(_NTHREADS)
@@ -25,29 +26,35 @@ const SAVE_STRING_FIGURES = "images/"
 
 # Manifolds constant. If PREVIOUSLY_COMPUTED is true, make sure the below set is the same used before.
 const SNAPSHOTS = [ solution(Molecule([0.8, 1.1], [-r, r])) for r in 0.5:0.01:3.0 ]
+# const SNAPSHOTS = [ solution(Molecule([ 0.8, 1.1], [-r, r])) for r in 0.5:0.1:3.0 ]
 
 # Offline constants
-const PREVIOUSLY_COMPUTED_BASIS = true
-const N_OFFLINE_SELECT = 0 # Put to zero to not compute more
+const PREVIOUSLY_COMPUTED_BASIS = false
+const N_OFFLINE_SELECT = 19 # Put to zero to not compute more
+# const N_OFFLINE_SELECT = 8
 
 # Online constants
-const PREVIOUSLY_COMPUTED_ONLINE_ERRORS = true
+const PREVIOUSLY_COMPUTED_ONLINE_ERRORS = false
 const ITERATIONS = 10_000
 const LENGTH_SOBOL = 2_000
 const R = 2.0
 const SMOOTH = 1e-8
-const MOLECULES = [ Molecule([ 0.8, 1.1 ], [ -r, r ]) for r in 0.5:0.05:3.0 ]
-const N_MAX_ONLINE = 0 # Put to zero to not compute more
+const MOLECULES = [ Molecule([ 0.8, 1.1 ], [ -r, r ]) for r in 0.5:0.02:3.0 ]
+# const MOLECULES = [ Molecule([ 0.8, 1.1 ], [ -r, r ]) for r in 0.5:0.05:3.0 ]
+const N_MAX_ONLINE = 8 # Put to zero to not compute more
+# const N_MAX_ONLINE = 5
 
 # Online internal extrapolation constants
-const PREVIOUSLY_COMPUTED_INTER_ERRORS = true
+const PREVIOUSLY_COMPUTED_INTER_ERRORS = false
 const MOLECULES_INTER = [ [ Molecule([1.9], [0.0]) ]; [ Molecule([0.8, 1.1], [-r, r]) for r in 0.03:0.03:0.48 ] ]
-const N_MAX_INTER = 0 # Put to zero to not compute more
+const N_MAX_INTER = 8 # Put to zero to not compute more
+# const N_MAX_INTER = 0
 
 # Online external extrapolation constants
-const PREVIOUSLY_COMPUTED_EXTER_ERRORS = true
+const PREVIOUSLY_COMPUTED_EXTER_ERRORS = false
 const MOLECULES_EXTER = [ Molecule([0.8, 1.1], [-r, r]) for r in 3.05:0.05:4.0 ]
-const N_MAX_EXTER = 0 # Put to zero to not compute more
+const N_MAX_EXTER = 8 # Put to zero to not compute more
+# const N_MAX_EXTER = 0
 
 
 basis = Mixture{Slater}[]
