@@ -1,16 +1,17 @@
 # NonLinearReducedBasis
 
-Before doing anything please ***read until the Constants section.***
+To run the simulations, run **Julia** from the directory *NonLinearReducedBasis*, then run *scripts/run_all.jl* with **Julia**.
 
-To run the simulations, run Julia from the directory *NonLinearReducedBasis*, then  
+
+If you wish to do the three steps separately, you can just run **Julia** and
 - `include("scripts/initialize.jl")` to initialize modules and computational constants,  
 - `include("scripts/selections_and_errors.jl")` to run the computations and  
 - `include("scripts/plots.jl")` to save the plots.
 
 ## Constants
 
-Different constants are defined in scripts/initialize.jl that you should probably change before doing anything.
-- `const _NTHREADS` number of threads you want to use, please change this value to match your computer characteristics
+Different constants are defined in *scripts/initialize.jl* that may need to be changed before running the calculations.
+- `const _NTHREADS` number of threads you want to use, please change this value to match your computer characteristics, changing this value is highly advised
 - `const SAVE_STRING` directory where results are saved
 - `const SAVE_STRING_FIGURES` directory where images are saved
 - `const SNAPSHOTS` set $`\mathcal{M}_{tr}`$ of solutions snapshots
@@ -25,9 +26,13 @@ Different constants are defined in scripts/initialize.jl that you should probabl
 - `const N_MAX_ONLINE` maximum number of elements to compute online error on
 - `_INTER` and `_EXTER` constants are just two other testing sets (taken outside $`\mathcal{M}_{\mathbf{z}}`$ in the paper)
 
+Default constants are constants used to obtain plots in the numerical section of the paper.
+A set of smaller constant parameters is included and commented in *scripts/initialize.jl*, if you wish to run a smaller version of the code performed in the paper on your computer.
+
 # Included modules
 
 See *NonLinearReducedBasis/examples/* for examples on the two modules. Loading of modules is in *examples/initialize.jl*.
+Take also care of the `_NTHREADS` constant in *examples/initialize.jl*.
 
 ## MixtureBarycenter.jl
 
