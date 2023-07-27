@@ -40,21 +40,23 @@ const LENGTH_SOBOL = 2_000
 const R = 2.0
 const SMOOTH = 1e-8
 const MOLECULES = [ Molecule([ 0.8, 1.1 ], [ -r, r ]) for r in 0.5:0.02:3.0 ]
-# const MOLECULES = [ Molecule([ 0.8, 1.1 ], [ -r, r ]) for r in 0.5:0.05:3.0 ]
+# const MOLECULES = [ Molecule([ 0.8, 1.1 ], [ -r, r ]) for r in 0.5:0.5:3.0 ]
 const N_MAX_ONLINE = 8 # Put to zero to not compute more
 # const N_MAX_ONLINE = 5
 
 # Online internal extrapolation constants
 const PREVIOUSLY_COMPUTED_INTER_ERRORS = false
 const MOLECULES_INTER = [ [ Molecule([1.9], [0.0]) ]; [ Molecule([0.8, 1.1], [-r, r]) for r in 0.03:0.03:0.48 ] ]
+# const MOLECULES_INTER = [ [ Molecule([1.9], [0.0]) ]; [ Molecule([0.8, 1.1], [-r, r]) for r in 0.05:0.1:0.45 ] ]
 const N_MAX_INTER = 8 # Put to zero to not compute more
-# const N_MAX_INTER = 0
+# const N_MAX_INTER = 2
 
 # Online external extrapolation constants
 const PREVIOUSLY_COMPUTED_EXTER_ERRORS = false
 const MOLECULES_EXTER = [ Molecule([0.8, 1.1], [-r, r]) for r in 3.05:0.05:4.0 ]
+# const MOLECULES_EXTER = [ Molecule([0.8, 1.1], [-r, r]) for r in 3.05:0.15:3.9 ]
 const N_MAX_EXTER = 8 # Put to zero to not compute more
-# const N_MAX_EXTER = 0
+# const N_MAX_EXTER = 2
 
 
 basis = Mixture{Slater}[]
